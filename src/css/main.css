@@ -59,14 +59,15 @@ input {
 
 i {
   font-size: 1rem;
+  cursor: pointer;
+  color: var(--gray);
 }
 
 .cancel {
-  cursor: pointer;
   display: none;
 }
 
-.show-cancel-btn {
+.show {
   display: block;
 }
 
@@ -88,4 +89,14 @@ p {
 
 .set-focus-border {
   border: 2px solid var(--bg-color);
+}
+
+.info {
+  margin-top: 0.7rem;
+}
+
+.result-container {
+  height: 0;
+  opacity: 0;
+  transition: all .5s ease;
 }

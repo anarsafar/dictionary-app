@@ -24,7 +24,7 @@ module.exports = {
       title: 'Dictionary App',
       filename: 'index.html',
       template: './src/index.html',
-    }),
+    })
   ],
   module: {
     rules: [

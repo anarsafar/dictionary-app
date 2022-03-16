@@ -14,6 +14,13 @@ const getDefinition = async (query) => {
 
 form.addEventListener('submit', (e) => {
     const query = input.value;
-    getDefinition(query);
+    getDefinition(query)
+        .then(response => {
+            import("./displayResponse").then(fun => {
+                const displayResponse = fun.default();
+                displayResponse(response)
+            })
+        })
+        .catch(err => console.log(`handle error ${err}`))
     e.preventDefault();
 });
