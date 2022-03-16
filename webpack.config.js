@@ -3,7 +3,13 @@ const path = require('path');
 
 module.exports = {
   mode: 'none',
-  entry: './src/js/main.js',
+  entry: [
+    './src/js/main.js',
+    './src/js/domElements.js',
+    './src/js/ajax.js',
+    './src/js/focus.js',
+    './src/js/clearForm.js'
+  ],
   devtool: 'inline-source-map',
   devServer: {
     static: './dist',

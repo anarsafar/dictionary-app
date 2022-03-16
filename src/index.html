@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dictionary App</title>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/core-js/3.21.1/minified.js"></script>
 </head>
 
 <body>
@@ -14,13 +13,10 @@
         <h1>English Dictionary</h1>
         <form>
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input 
-                type="text" 
-                placeholder="Search a word" 
-                required 
-                spellcheck="false"
-            />
-            <i class="fa-solid fa-xmark cancel"></i>
+            <input type="text" placeholder="Search a word" required spellcheck="false" />
+            <span class="cancel">
+                <i class="fa-solid fa-xmark"></i>
+            </span>
         </form>
         <p>Type any existing word and press enter to get meaning, example, synonyms, etc.</p>
     </div>
