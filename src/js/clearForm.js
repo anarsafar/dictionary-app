@@ -1,16 +1,24 @@
-import { cancelBtn, input } from './domElements';
+import { clearBtn, input, result, resultContainer, resultHeader } from './domElements';
 
-cancelBtn.addEventListener('click', () => {
+const hideResponseUI = () => {
+    resultContainer.classList.remove('show-result');
+    result.classList.remove('show-result-components');
+    resultHeader.classList.remove('show-result-components');
+}
+
+clearBtn.addEventListener('click', () => {
     input.value = '';
-    cancelBtn.classList.remove('show-cancel-btn');
+    hideResponseUI();
+    clearBtn.classList.remove('show-clear-btn');
     input.focus();
 });
 
 input.addEventListener('keyup', (e) => {
     const { value } = e.target;
     if (value.length === 0) {
-        cancelBtn.classList.remove('show-cancel-btn');
+        hideResponseUI();
+        clearBtn.classList.remove('show-clear-btn');
     } else {
-        cancelBtn.classList.add('show-cancel-btn');
+        clearBtn.classList.add('show-clear-btn');
     }
-})
+});

@@ -17,10 +17,9 @@ form.addEventListener('submit', (e) => {
     getDefinition(query)
         .then(response => {
             import("./displayResponse").then(fun => {
-                const displayResponse = fun.default();
+                const displayResponse = fun.default;
                 displayResponse(response)
             })
         })
-        .catch(err => console.log(`handle error ${err}`))
     e.preventDefault();
 });

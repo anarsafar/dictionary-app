@@ -1,10 +1,6 @@
-.result-container{
-  height: auto;
-  opacity: 1;
-}
-
-.info{
-  display: none;
+.not-found {
+  color: var(--black);
+  font-weight: 500;
 }
 
 .result-header {
@@ -42,12 +38,12 @@ h3 {
   padding-block: 1rem;
 }
 
-.result-body > div {
+.result {
   max-height: 200px;
   overflow-y: auto;
 }
 
-.result-body > div::-webkit-scrollbar {
+.result::-webkit-scrollbar {
   display: none;
 }
 
