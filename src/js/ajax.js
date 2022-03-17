@@ -1,4 +1,4 @@
-import { form, input } from './domElements'
+import { form, info, input } from './domElements'
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 
@@ -14,6 +14,14 @@ const getDefinition = async (query) => {
 
 form.addEventListener('submit', (e) => {
     const query = input.value;
+    if (info.classList.contains("hide")) {
+        info.classList.remove('hide')
+        import("./clearForm").then(fun => {
+            const hideResponseUI = fun.default;
+            hideResponseUI();
+        });
+    }
+    info.innerHTML = `Searching the meaning of <span class="bold-text">${query}</span>`;
     getDefinition(query)
         .then(response => {
             import("./displayResponse").then(fun => {

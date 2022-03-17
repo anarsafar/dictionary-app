@@ -1,4 +1,4 @@
-import { clearBtn, input, result, resultContainer, resultHeader } from './domElements';
+import { clearBtn, info, input, result, resultContainer, resultHeader } from './domElements';
 
 const hideResponseUI = () => {
     resultContainer.classList.remove('show-result');
@@ -9,6 +9,8 @@ const hideResponseUI = () => {
 clearBtn.addEventListener('click', () => {
     input.value = '';
     hideResponseUI();
+    info.classList.remove('hide');
+    info.innerHTML = `Type any existing word and press enter to get meaning, example, synonyms, etc.`
     clearBtn.classList.remove('show-clear-btn');
     input.focus();
 });
@@ -16,9 +18,10 @@ clearBtn.addEventListener('click', () => {
 input.addEventListener('keyup', (e) => {
     const { value } = e.target;
     if (value.length === 0) {
-        hideResponseUI();
         clearBtn.classList.remove('show-clear-btn');
     } else {
         clearBtn.classList.add('show-clear-btn');
     }
 });
+
+export default hideResponseUI

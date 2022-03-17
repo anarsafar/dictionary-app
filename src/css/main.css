@@ -112,7 +112,7 @@ p {
 }
 
 .show-result {
-  max-height: 290px;
+  max-height: 350px;
 }
 
 .show-result-components {
@@ -121,4 +121,13 @@ p {
 
 .show {
   display: block;
+}
+
+.hide{
+  display: none;
+}
+
+.bold-text {
+  color: var(--black);
+  font-weight: 500;
 }
