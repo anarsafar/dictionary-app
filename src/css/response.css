@@ -9,9 +9,15 @@
   padding-block: 0.8rem;
 }
 
-.word-info h3 {
+.word-response {
   font-size: 1.5rem;
   font-weight: 500;
+}
+
+.phonetic-sound{
+  margin-left: .3rem;
+  color: var(--gray);
+  font-size: .8rem;
 }
 
 p,
@@ -60,4 +66,8 @@ h3 {
 .meaning {
   padding: 0 0.6rem;
   margin-bottom: 1rem;
+}
+
+.audio-listen{
+  color: var(--bg-color);
 }
