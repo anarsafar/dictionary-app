@@ -11,6 +11,12 @@ const partOfSpeech = document.querySelector('.part-of-speech');
 const phoneticSound = document.querySelector('.phonetic-sound');
 const audioElement = document.getElementById('audio');
 const phoneticListen = document.querySelector('.fa-volume-high');
+// const displayResultContainer = document.querySelector('.result-body');
+// const exampleContainer = document.querySelector('.example');
+// const exampleText = document.querySelector('.example-text');
+// const definitionText = document.querySelector('.definition-text');
+// const definitionContainer = document.querySelector('.meaning');
+
 export {
     input,
     magnifyingIcon,
@@ -24,5 +30,10 @@ export {
     partOfSpeech,
     phoneticSound,
     phoneticListen,
-    audioElement
+    audioElement,
+    // displayResultContainer
+    // exampleText,
+    // exampleContainer,
+    // definitionText,
+    // definitionContainer
 }

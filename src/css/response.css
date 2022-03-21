@@ -26,6 +26,11 @@ h3 {
   margin: 0;
 }
 
+h3 span{
+  color: var(--gray);
+  font-size: .8rem;
+}
+
 .result-body h3 {
   font-size: 1.1rem;
   font-weight: 500;
@@ -36,7 +41,7 @@ h3 {
 }
 
 .result-body {
-  padding-block: 1rem;
+  padding: 0 0 1rem;
 }
 
 .result {
@@ -65,7 +70,7 @@ h3 {
 
 .meaning {
   padding: 0 0.6rem;
-  margin-bottom: 1rem;
+  margin-block: 1rem;
 }
 
 .audio-listen{
