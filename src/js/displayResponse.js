@@ -70,6 +70,8 @@ const displayBodyData = (response) => {
 
     console.log(newMeaning);
 
+    const modifiedMeaning = {};
+
     Object.entries(newMeaning).forEach(([key, value]) => {
 
         if (value.length > 1) {
@@ -78,64 +80,84 @@ const displayBodyData = (response) => {
             value.forEach(val => {
                 let ifHasExample = false;
 
-                val.definitions.forEach(def => {
-                    if (Object.prototype.hasOwnProperty.call(def, 'example')) {
+                for (let i = 0; i < val.definitions.length; i += 1) {
+                    if (Object.prototype.hasOwnProperty.call(val.definitions[i], 'example')) {
                         ifHasExample = !ifHasExample;
+                        break
                     };
-                });
-
+                }
                 if (ifHasExample) {
                     tempValue.push(val);
                 };
             });
 
-            newMeaning[key] = [...tempValue];
-        };
+            if (tempValue.length > 0) {
+                if (Object.prototype.hasOwnProperty.call(modifiedMeaning, key)) {
+                    modifiedMeaning[key] = tempValue;
+                } else {
+                    modifiedMeaning[key] = {};
+                    modifiedMeaning[key] = tempValue;
+                }
+            } else if (Object.prototype.hasOwnProperty.call(modifiedMeaning, key)) {
+                modifiedMeaning[key] = value;
+            } else {
+                modifiedMeaning[key] = {};
+                modifiedMeaning[key] = value;
+            }
+
+        } else {
+            modifiedMeaning[key] = {};
+            modifiedMeaning[key] = value;
+        }
+        // console.log(modifiedMeaning);
     });
 
-    console.log(newMeaning);
+    console.log(modifiedMeaning);
 
-    // const definitionWithExamples = [];
-    // const definitionWithoutExamples = [];
+    const definitionWithExamples = [];
+    const definitionWithoutExamples = [];
 
-    // meaning.definitions.forEach(def => {
-    //     if (Object.prototype.hasOwnProperty.call(def, 'example')) {
-    //         definitionWithExamples.push(def);
-    //     } else {
-    //         definitionWithoutExamples.push(def);
-    //     };
-    // });
+    Object.entries(modifiedMeaning).forEach(([key, value]) => {
+        value.forEach(val => {
+            val.definitions.forEach(def => {
+                if (Object.prototype.hasOwnProperty.call(def, 'example')) {
+                    definitionWithExamples.push(def);
+                } else {
+                    definitionWithoutExamples.push(def);
+                };
+            });
+        });
+        if (definitionWithExamples.length !== 0) {
+            const getRandomDefIndex = Math.floor(Math.random() * definitionWithExamples.length);
+            const getRandomDef = definitionWithExamples[getRandomDefIndex];
 
-    // if (definitionWithExamples.length !== 0) {
-    //     const getRandomDefIndex = Math.floor(Math.random() * definitionWithExamples.length);
-    //     const getRandomDef = definitionWithExamples[getRandomDefIndex];
+            console.log(definitionWithExamples, getRandomDef);
+            result.innerHTML += `
+            <div class="line-through">
+                <div class="meaning">
+                    <h3>Definition <span>(${key})</span></h3>
+                    <p class="definition-text">${getRandomDef.definition}</p>
+                </div>
+            </div>
+            <div class="line-through">
+                <div class="example">
+                    <h3>Example</h3>
+                    <p class="example-text">${getRandomDef.example}</p>
+                </div>
+            </div> `
+        } else {
+            const getRandomDefIndex = Math.floor(Math.random() * definitionWithoutExamples.length);
+            const getRandomDef = definitionWithoutExamples[getRandomDefIndex];
 
-    //     console.log(definitionWithExamples, getRandomDef);
-    //     result.innerHTML += `
-    //     <div class="line-through">
-    //         <div class="meaning">
-    //             <h3>Definition <span>(${meaning.partOfSpeech})</span></h3>
-    //             <p class="definition-text">${getRandomDef.definition}</p>
-    //         </div>
-    //     </div>
-    //     <div class="line-through">
-    //         <div class="example">
-    //             <h3>Example</h3>
-    //             <p class="example-text">${getRandomDef.example}</p>
-    //         </div>
-    //     </div> `
-    // } else {
-    //     const getRandomDefIndex = Math.floor(Math.random() * definitionWithoutExamples.length);
-    //     const getRandomDef = definitionWithoutExamples[getRandomDefIndex];
-
-    //     result.innerHTML += `
-    //     <div class="line-through">
-    //         <div class="meaning">
-    //             <h3>Definition <span>(${meaning.partOfSpeech})</span></h3>
-    //             <p class="definition-text">${getRandomDef.definition}</p>
-    //         </div>
-    //     </div>`
-    // }
+            result.innerHTML += `
+            <div class="line-through">
+                <div class="meaning">
+                    <h3>Definition <span>(${key})</span></h3>
+                    <p class="definition-text">${getRandomDef.definition}</p>
+                </div>
+            </div>`
+        }
+    })
 };
 
 const displayResponse = (res) => {
