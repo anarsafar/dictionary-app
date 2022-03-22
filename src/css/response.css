@@ -14,10 +14,10 @@
   font-weight: 500;
 }
 
-.phonetic-sound{
-  margin-left: .3rem;
+.phonetic-sound {
+  margin-left: 0.3rem;
   color: var(--gray);
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
 
 p,
@@ -26,9 +26,9 @@ h3 {
   margin: 0;
 }
 
-h3 span{
+h3 span {
   color: var(--gray);
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
 
 .result-body h3 {
@@ -57,22 +57,25 @@ h3 span{
   border-bottom: 1px solid var(--light-gray);
 }
 
+.example,
 .meaning,
-.example {
+.list {
+  padding: 0 0.6rem;
+  margin-block: 1rem;
   border-left: 3px solid var(--bg-color);
   border-radius: 0.3rem;
 }
 
-.example {
-  padding: 0 0.6rem;
-  margin-block: 1rem;
-}
-
-.meaning {
-  padding: 0 0.6rem;
-  margin-block: 1rem;
-}
-
-.audio-listen{
+.audio-listen {
   color: var(--bg-color);
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+button:hover {
+  opacity: .7;
 }

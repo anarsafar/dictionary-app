@@ -24,19 +24,19 @@ const displayCards = (getRandomDef, key, synonyms, antonyms) => {
                      <h3>Example</h3>
                      <p class="example-text">${getRandomDef.example}</p>
                 </div>
-            </div>` : null}
+            </div>` : ""}
      ${synonyms.length !== 0 ? `
             <div class="line-through">
-                <div class="synonyms">
+                <div class="list">
                      <h3>Synonyms</h3>
-                     <p class="list">${synonyms.map(synonym => `<button id="getDefinition">${synonym}</button>`)}</p>
+                     <p class="list-container">${synonyms.map(synonym => ` <button id="getDefinition">${synonym}</button>`)}</p>
                 </div>
             </div>` : ""}
     ${antonyms.length !== 0 ? `
             <div class="line-through">
-                <div class="synonyms">
-                     <h3>Synonyms</h3>
-                     <p class="list">${antonyms.map(antonym => `<button id="getDefinition">${antonym}</button>`)}</p>
+                <div class="list">
+                     <h3>Antonyms</h3>
+                     <p class="list-container">${antonyms.map(antonym => `<button id="getDefinition">${antonym}</button>`)}</p>
                 </div>
             </div>` : ""}`
 }
