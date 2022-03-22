@@ -8,7 +8,8 @@ module.exports = {
     './src/js/domElements.js',
     './src/js/ajax.js',
     './src/js/focus.js',
-    './src/js/clearForm.js'
+    './src/js/clearForm.js',
+    './src/js/displayHeaderData.js'
   ],
   devtool: 'inline-source-map',
   devServer: {

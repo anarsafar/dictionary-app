@@ -6,28 +6,40 @@ const getDefinition = async (query) => {
     try {
         const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${query}`);
         const data = await response.json();
-        return data
+        return data;
     } catch (err) {
-        throw new Error(err)
-    }
-}
+        throw new Error(err);
+    };
+};
 
-form.addEventListener('submit', (e) => {
-    const query = input.value;
+const submitWord = (e, wordFromList) => {
+    let query = input.value;
+
     if (info.classList.contains("hide")) {
-        info.classList.remove('hide')
+        info.classList.remove('hide');
         import("./clearForm").then(fun => {
             const hideResponseUI = fun.default;
             hideResponseUI();
         });
-    }
+    };
+
     info.innerHTML = `Searching the meaning of <span class="bold-text">${query}</span>`;
+
+    if (wordFromList !== undefined) {
+        query = wordFromList
+    };
+
     getDefinition(query)
         .then(response => {
-            import("./displayResponse").then(fun => {
+            import("./displayResponse/displayResponse").then(fun => {
                 const displayResponse = fun.default;
-                displayResponse(response)
-            })
-        })
+                displayResponse(response);
+            });
+        });
+
     e.preventDefault();
-});
+}
+
+form.addEventListener('submit', (e) => submitWord(e));
+
+export default submitWord;
