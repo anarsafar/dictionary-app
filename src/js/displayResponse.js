@@ -1,14 +1,44 @@
 import "../css/response.css"
 import {
-    audioElement, headerWord, info, input, partOfSpeech,
-    phoneticListen, phoneticSound, result, resultContainer,
-    resultHeader
+    audioElement, headerWord, info, input, partOfSpeech, phoneticListen, phoneticSound, result,
+    resultContainer, resultHeader
 } from "./domElements"
 
 const showResponseUI = () => {
     resultContainer.classList.add('show-result');
     resultHeader.classList.add('show-result-components');
     result.classList.add('show-result-components');
+}
+
+const displayCards = (getRandomDef, key, synonyms, antonyms) => {
+    result.innerHTML += `
+    <div class="line-through">
+        <div class="meaning">
+            <h3>Definition <span>(${key})</span></h3>
+            <p class="definition-text">${getRandomDef.definition}</p>
+        </div>
+    </div>
+    ${getRandomDef.example !== undefined ? `
+            <div class="line-through">
+                <div class="example">
+                     <h3>Example</h3>
+                     <p class="example-text">${getRandomDef.example}</p>
+                </div>
+            </div>` : null}
+     ${synonyms.length !== 0 ? `
+            <div class="line-through">
+                <div class="synonyms">
+                     <h3>Synonyms</h3>
+                     <p class="list">${synonyms.map(synonym => `<button id="getDefinition">${synonym}</button>`)}</p>
+                </div>
+            </div>` : ""}
+    ${antonyms.length !== 0 ? `
+            <div class="line-through">
+                <div class="synonyms">
+                     <h3>Synonyms</h3>
+                     <p class="list">${antonyms.map(antonym => `<button id="getDefinition">${antonym}</button>`)}</p>
+                </div>
+            </div>` : ""}`
 }
 
 const displayHeaderData = (res) => {
@@ -68,7 +98,7 @@ const displayBodyData = (response) => {
         });
     });
 
-    console.log(newMeaning);
+    // console.log(newMeaning);
 
     const modifiedMeaning = {};
 
@@ -114,48 +144,44 @@ const displayBodyData = (response) => {
 
     console.log(modifiedMeaning);
 
-    const definitionWithExamples = [];
-    const definitionWithoutExamples = [];
+
+
 
     Object.entries(modifiedMeaning).forEach(([key, value]) => {
+        const definitionWithExamples = [];
+        const definitionWithoutExamples = [];
+        let synonyms = [];
+        let antonyms = [];
+
         value.forEach(val => {
             val.definitions.forEach(def => {
+
                 if (Object.prototype.hasOwnProperty.call(def, 'example')) {
                     definitionWithExamples.push(def);
                 } else {
                     definitionWithoutExamples.push(def);
                 };
             });
+
+            if (val.synonyms.length !== 0) {
+                synonyms = [...val.synonyms];
+            }
+
+            if (val.antonyms.length !== 0) {
+                antonyms = [...val.antonyms];
+            }
+
         });
+        console.log(synonyms);
+
         if (definitionWithExamples.length !== 0) {
             const getRandomDefIndex = Math.floor(Math.random() * definitionWithExamples.length);
             const getRandomDef = definitionWithExamples[getRandomDefIndex];
-
-            console.log(definitionWithExamples, getRandomDef);
-            result.innerHTML += `
-            <div class="line-through">
-                <div class="meaning">
-                    <h3>Definition <span>(${key})</span></h3>
-                    <p class="definition-text">${getRandomDef.definition}</p>
-                </div>
-            </div>
-            <div class="line-through">
-                <div class="example">
-                    <h3>Example</h3>
-                    <p class="example-text">${getRandomDef.example}</p>
-                </div>
-            </div> `
+            displayCards(getRandomDef, key, synonyms, antonyms);
         } else {
             const getRandomDefIndex = Math.floor(Math.random() * definitionWithoutExamples.length);
             const getRandomDef = definitionWithoutExamples[getRandomDefIndex];
-
-            result.innerHTML += `
-            <div class="line-through">
-                <div class="meaning">
-                    <h3>Definition <span>(${key})</span></h3>
-                    <p class="definition-text">${getRandomDef.definition}</p>
-                </div>
-            </div>`
+            displayCards(getRandomDef, key, synonyms, antonyms);
         }
     })
 };
