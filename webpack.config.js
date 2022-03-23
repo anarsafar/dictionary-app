@@ -7,9 +7,13 @@ module.exports = {
     './src/js/main.js',
     './src/js/domElements.js',
     './src/js/ajax.js',
-    './src/js/focus.js',
     './src/js/clearForm.js',
-    './src/js/displayHeaderData.js'
+    './src/js/displayResponse/displayHeaderData.js',
+    './src/js/displayResponse/displayBodyData.js',
+    './src/js/displayResponse/displayCards.js',
+    './src/js/displayResponse/displayResponse.js',
+    './src/js/displayResponse/groupDefinitions.js',
+    './src/js/displayResponse/modifyDefinitions.js',
   ],
   devtool: 'inline-source-map',
   devServer: {

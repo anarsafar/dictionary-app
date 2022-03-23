@@ -9,10 +9,13 @@ const showResponseUI = () => {
     result.classList.add('show-result-components');
 };
 
-const displayResponse = (res) => {
+const displayResponse = (res,wordFromList) => {
     if (res.title) {
         info.innerHTML =
-            `Can't find the meaning <span class="bold-text">"${input.value}"</span>. 
+            `Can't find the meaning 
+            <span class="bold-text">
+                "${input.value.length !== 0 ? input.value : wordFromList}"
+            </span>. 
              Please try to search for another word`;
     } else {
         displayHeaderData(res);

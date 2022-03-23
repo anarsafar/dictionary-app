@@ -4,7 +4,7 @@ const hideResponseUI = () => {
     resultContainer.classList.remove('show-result');
     result.classList.remove('show-result-components');
     resultHeader.classList.remove('show-result-components');
-}
+};
 
 clearBtn.addEventListener('click', () => {
     input.value = '';
@@ -24,4 +24,4 @@ input.addEventListener('keyup', (e) => {
     }
 });
 
-export default hideResponseUI
+export default hideResponseUI;

@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
 
 :root {
-  --bg-color: #6c3483;
+  --accent-color: #6c3483;
   --gray: #999;
   --light-gray: rgb(191, 191, 191);
   --white: #fff;
@@ -16,7 +16,7 @@ body {
   margin: 0;
   padding: 2rem;
   font-size: 10px;
-  background-color: var(--bg-color);
+  background-color: var(--accent-color);
   font-family: "Poppins", sans-serif;
   height: 100vh;
   width: 100vw;
@@ -58,9 +58,14 @@ input {
   color: var(--black);
 }
 
-i {
+input::placeholder {
   font-size: 1rem;
-  cursor: pointer;
+  font-weight: 400;
+  color: var(--light-gray);
+}
+
+i {
+  font-size: 1.1rem;
   color: var(--gray);
 }
 
@@ -70,16 +75,15 @@ i {
   cursor: none;
 }
 
+.clear-btn i,
+.fa-volume-high {
+  cursor: pointer;
+}
+
 .show-clear-btn {
   opacity: 1;
   pointer-events: all;
   cursor: pointer;
-}
-
-input::placeholder {
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--light-gray);
 }
 
 p {
@@ -89,11 +93,11 @@ p {
 
 /* Focus state */
 .set-focus-mag {
-  color: var(--bg-color);
+  color: var(--accent-color);
 }
 
 .set-focus-border {
-  border: 2px solid var(--bg-color);
+  border: 2px solid var(--accent-color);
 }
 
 .info {
@@ -123,7 +127,7 @@ p {
   display: block;
 }
 
-.hide{
+.hide {
   display: none;
 }
 

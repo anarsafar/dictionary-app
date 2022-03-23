@@ -26,14 +26,15 @@ const submitWord = (e, wordFromList) => {
     info.innerHTML = `Searching the meaning of <span class="bold-text">${query}</span>`;
 
     if (wordFromList !== undefined) {
-        query = wordFromList
+        query = wordFromList;
     };
 
     getDefinition(query)
         .then(response => {
             import("./displayResponse/displayResponse").then(fun => {
                 const displayResponse = fun.default;
-                displayResponse(response);
+                displayResponse(response, wordFromList);
+                input.value = "";
             });
         });
 

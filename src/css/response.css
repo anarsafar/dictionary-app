@@ -1,4 +1,4 @@
-.result-header {
+.display-header-data {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -62,12 +62,12 @@ h3 span {
 .list {
   padding: 0 0.6rem;
   margin-block: 1rem;
-  border-left: 3px solid var(--bg-color);
+  border-left: 3px solid var(--accent-color);
   border-radius: 0.3rem;
 }
 
 .audio-listen {
-  color: var(--bg-color);
+  color: var(--accent-color);
 }
 
 button {
@@ -77,5 +77,5 @@ button {
 }
 
 button:hover {
-  opacity: .7;
+  opacity: 0.7;
 }
