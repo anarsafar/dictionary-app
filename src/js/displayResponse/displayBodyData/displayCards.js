@@ -1,5 +1,6 @@
-import submitWord from "../ajax";
-import { result } from "../domElements";
+/* eslint-disable import/no-cycle */
+import submitWord from "../../ajax";
+import { result } from "../../domElements";
 
 const setButtonClick = () => {
     const buttons = document.querySelectorAll('.getDefinition');
@@ -41,6 +42,7 @@ const displayCards = (getRandomDef, key, synonyms, antonyms) => {
                 </div>
             </div>` : ""}`;
     setButtonClick();
+    result.scroll(0, 0);
 }
 
 export default displayCards;

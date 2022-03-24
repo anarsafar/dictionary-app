@@ -1,7 +1,8 @@
+/* eslint-disable import/no-cycle */
 import "../../css/response.css";
 import { info, input, result, resultContainer, resultHeader } from "../domElements";
 import displayHeaderData from "./displayHeaderData";
-import displayBodyData from "./displayBodyData";
+import displayBodyData from "./displayBodyData/displayBodyData";
 
 const showResponseUI = () => {
     resultContainer.classList.add('show-result');

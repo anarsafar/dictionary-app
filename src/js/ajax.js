@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { form, info, input } from './domElements'
 import "core-js/stable";
 import "regenerator-runtime/runtime";

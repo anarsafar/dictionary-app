@@ -1,7 +1,8 @@
+/* eslint-disable import/no-cycle */
 import modifyDefinitions from "./modifyDefinitions";
 import groupDefinitions from "./groupDefinitions";
 import displayCards from "./displayCards";
-import { result } from "../domElements";
+import { result } from "../../domElements";
 
 const displayBodyData = (res) => {
     result.innerHTML = '';
@@ -10,6 +11,7 @@ const displayBodyData = (res) => {
     const modifiedDefs = modifyDefinitions(groupedDefinitions);
 
     Object.entries(modifiedDefs).forEach(([key, value]) => {
+ 
         const definitionWithExamples = [];
         const definitionWithoutExamples = [];
         let synonyms = [];
@@ -43,8 +45,8 @@ const displayBodyData = (res) => {
             const getRandomDefIndex = Math.floor(Math.random() * definitionWithoutExamples.length);
             const getRandomDef = definitionWithoutExamples[getRandomDefIndex];
             displayCards(getRandomDef, key, synonyms, antonyms);
-        }
-    })
+        };
+    });
 };
 
 export default displayBodyData;
