@@ -1,5 +1,5 @@
 /* eslint-disable import/no-cycle */
-import { form, info, input } from './domElements'
+import { form, info, input, clearBtn } from './domElements'
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 
@@ -36,6 +36,7 @@ const submitWord = (e, wordFromList) => {
                 const displayResponse = fun.default;
                 displayResponse(response, wordFromList);
                 input.value = "";
+                clearBtn.classList.remove('show-clear-btn');
             });
         });
 
