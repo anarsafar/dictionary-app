@@ -52,7 +52,8 @@
 [![Product Name Screen Shot][product-screenshot]](https://dictionary-app-ashen.vercel.app)
 
 An English dictionary app build with vanilla JS. For this project i used [Free Dictionary API](https://dictionaryapi.dev/) its 
-free and its doesn't need any API key which is awesome. It's gives data such as definition examples, synonyms, antonyms and also phonetic sound. 
+free and its doesn't need any API key which is awesome. It's gives data such as definition examples, synonyms, antonyms and also phonetic sound. Even searching same
+word repeatedly gives different definiton and examples (not always depens on API response)
 But it has little issue. Whenever i try display information about word, response data from API call inconsistent so i decided to manupulate API response 
 and return new Object with neccessary data. Also you can search by clicking synonyms and antonyms.
 
@@ -97,7 +98,7 @@ via node.js download [here](https://nodejs.org/en/)
 3. install packages.
 * via yarn
   ```sh
-    yarn add
+    yarn install
     ```
 * via npm
   ```sh
