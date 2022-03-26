@@ -1,5 +1,5 @@
 /* eslint-disable import/no-cycle */
-import { form, info, input, clearBtn } from './domElements'
+import { form, info, input } from './domElements'
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 
@@ -24,19 +24,18 @@ const submitWord = (e, wordFromList) => {
         });
     };
 
-    info.innerHTML = `Searching the meaning of <span class="bold-text">${query}</span>`;
-
     if (wordFromList !== undefined) {
         query = wordFromList;
     };
+
+    info.innerHTML = `Searching the meaning of <span class="bold-text">${query}</span>`;
 
     getDefinition(query)
         .then(response => {
             import("./displayResponse/displayResponse").then(fun => {
                 const displayResponse = fun.default;
+                input.value = query;
                 displayResponse(response, wordFromList);
-                input.value = "";
-                clearBtn.classList.remove('show-clear-btn');
             });
         });
 

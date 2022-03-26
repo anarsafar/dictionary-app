@@ -2,12 +2,10 @@ import { resultHeader } from "../domElements";
 
 const displayHeaderData = (res) => {
 
-    const newResponse = res.filter(data => data.phonetics.length > 0);
-
     resultHeader.innerHTML = `
                 <div class="display-header-data">
                     <div class="word-info">
-                        <span class="word-response">${newResponse[0].word}</span>
+                        <span class="word-response">${res[0].word}</span>
                         <span class="phonetic-sound"></span>
                         <p class="phonetic">
                             <span class="part-of-speech"></span>
@@ -25,7 +23,7 @@ const displayHeaderData = (res) => {
     const audioElement = document.getElementById('audio');
     const phoneticListen = document.querySelector('.fa-volume-high');
 
-    newResponse.forEach(data => {
+    res.forEach(data => {
 
         data.phonetics.forEach(ph => {
             if (Object.prototype.hasOwnProperty.call(ph, 'text')) {
