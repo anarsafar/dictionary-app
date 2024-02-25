@@ -48,14 +48,18 @@ form {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 0.5rem;
+  position: relative;
 }
 
 input {
   all: unset;
   flex: 1;
   padding: 1rem 0.5rem;
+  max-width: 85%;
   font-size: 1rem;
   color: var(--black);
+  margin-right: auto;
 }
 
 input::placeholder {
@@ -73,6 +77,8 @@ i {
   opacity: 0;
   pointer-events: none;
   cursor: none;
+  position: absolute;
+  right: 0.5rem;
 }
 
 .clear-btn i,
